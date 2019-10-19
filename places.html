@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
+	<style>
+		body,html{
+			position: relative;
+			width: 100%;
+			margin: 0;
+			background-color: #2a2a2a;
+		}
+		.yaar{
+			opacity: 0.3;
+			height: 900px;
+			width: 100%;
+			z-index: -1;
+
+		}
+		* {
+ 			 box-sizing: border-box;
+		}
+
+		/* Position the image container (needed to position the left and right arrows) */
+		.container {
+		  position: absolute;
+		  top: 50px;
+		  right: 15%;
+		  left: 15%;
+		  /*width: 100%;*/
+		  height: 200px;
+
+		}
+
+		/* Hide the images by default */
+		.mySlides {
+		  display: none;
+		}
+
+		/* Add a pointer when hovering over the thumbnail images */
+		.cursor {
+		  cursor: pointer;
+		}
+
+		/* Next & previous buttons */
+		.prev,
+		.next {
+		  cursor: pointer;
+		  position: absolute;
+		  top: 40%;
+		  width: auto;
+		  padding: 16px;
+		  margin-top: -50px;
+		  color: white;
+		  font-weight: bold;
+		  font-size: 20px;
+		  border-radius: 0 3px 3px 0;
+		  user-select: none;
+		  -webkit-user-select: none;
+		}
+
+		/* Position the "next button" to the right */
+		.next {
+		  right: 0;
+		  border-radius: 3px 0 0 3px;
+		}
+
+		/* On hover, add a black background color with a little bit see-through */
+		.prev:hover,
+		.next:hover {
+		  background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		/* Number text (1/3 etc) */
+		.numbertext {
+		  color: #f2f2f2;
+		  font-size: 12px;
+		  padding: 8px 12px;
+		  position: absolute;
+		  top: 0;
+		}
+
+		/* Container for image text */
+		.caption-container {
+		  text-align: center;
+		  background-color: #222;
+		  padding: 2px 16px;
+		  color: white;
+		}
+
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		/* Six columns side by side */
+		.column {
+		  float: left;
+		  width: 16.66%;
+		}
+
+		/* Add a transparency effect for thumnbail images */
+		.demo {
+		  opacity: 0.6;
+		}
+
+		.active,
+		.demo:hover {
+		  opacity: 1;
+		}
+		.ples{
+			position: relative;
+			width: 100%;
+			height: 200px;
+			/*background-color: #2a2a2a;*/
+		}
+		.one, .two, .three, .four{
+			background-color: #2a2a2a;
+			font-size: 20px;
+			text-align: left;
+			color: white;
+			width: 100%;
+			margin: 0;
+			padding: 5px;
+			border-style: none;
+		}
+		.para{
+			text-align: left;
+			color: white;
+		}
+		.one:hover, .two:hover, .three:hover, .four:hover{
+			background-color: gray;
+			color: black;
+		}
+		.header{
+			color: white;
+			padding: 0px 0px 0px 10px;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+</head>
+<body>
+<div class="bgk">
+	<div class="header"><h2>Places to visit</h2></div>
+	<img src="image3.jpg" class="yaar">
+	<div class="container">
+
+  <!-- Full-width images with number text -->
+	  	<div class="mySlides">
+	   		 <div class="numbertext">1 / 4</div>
+	      		<img src="FEHA-exterior-horizontal.jpg" style="width:100%">
+	 	 </div>
+
+	  	<div class="mySlides">
+	    	<div class="numbertext">2 / 4</div>
+	      		<img src="america-ancient-architecture-356844.jpg" style="width:100%">
+	  	</div>
+
+	  <div class="mySlides">
+	    <div class="numbertext">3 / 4</div>
+	      <img src="architecture-art-building-39658.jpg" style="width:100%">
+	  </div>
+
+	  <div class="mySlides">
+	    <div class="numbertext">4 / 4</div>
+	      <img src="architecture-blue-sky-building-286076.jpg" style="width:100%">
+	  </div>
+
+  <!-- Next and previous buttons -->
+	  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+	  <div class="caption-container">
+	    <p id="caption"></p>
+	  </div>
+
+  <!-- Thumbnail images -->
+	  <div class="row">
+	    <div class="column">
+	      <img class="demo cursor" src="FEHA-exterior-horizontal.jpg" style="width:100%" onclick="currentSlide(1)" alt="Federal Hall">
+	    </div>
+	    <div class="column"> 
+	      <img class="demo cursor" src="america-ancient-architecture-356844.jpg" style="width:100%" onclick="currentSlide(2)" alt="The statue of liberty">
+	    </div>
+	    <div class="column">
+	      <img class="demo cursor" src="architecture-art-building-39658.jpg" style="width:100%" onclick="currentSlide(3)" alt="St.Patrick's Cathedral">
+	    </div>
+	    <div class="column">
+	      <img class="demo cursor" src="architecture-blue-sky-building-286076.jpg" style="width:100%" onclick="currentSlide(4)" alt="Central Park">
+	    </div>
+  	</div>
+</div>
+</div>
+<div class="ples">
+	<div ng-app="myApp"> 
+		<div ng-controller="ctrlo">
+
+			<button ng-click="myFunc()" class="one">Federal Hall</button>
+
+
+				<div ng-show="showMe">
+	    			<p class="para">Federal Hall is the name given to the first of two historic buildings located at 26 Wall Street, New York City. The original, a Greek Revival structure completed in 1703, served as New York's first City Hall.It was the site where the colonial Stamp Act Congress met to draft its message to King George III claiming entitlement to the same rights as the residents of Britain and protesting "taxation without representation". After the American Revolution, it served as meeting place for the Congress of the Confederation held under the Articles of Confederation.
+
+In 1788, the building was remodeled and enlarged under the direction of Pierre Charles L'Enfant,[4] becoming the first example of Federal Style architecture in the United States. It was renamed Federal Hall when it became the first Capitol of the newly created United States in 1789 and hosted the 1st United States Congress. On its steps George Washington was sworn in as the first President. It was demolished in 1812.</p>
+				</div>
+		</div>
+		<div ng-controller="ctrlt">
+			<button ng-click="myFunct()" class="two">Statue of liberty</button>
+				<div ng-show="showl">
+					<p class="para">
+						The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in New York Harbor in New York City, in the United States. The copper statue, a gift from the people of France to the people of the United States, was designed by French sculptor Frédéric Auguste Bartholdi and built by Gustave Eiffel.The statue was dedicated on October 28, 1886.
+
+The Statue of Liberty is a figure of a robed woman representing Libertas, a Roman liberty goddess. She holds a torch above her head with her right hand, and in her left hand carries a tabula ansata inscribed in Roman numerals with "JULY IV MDCCLXXVI" (July 4, 1776), the date of the U.S. Declaration of Independence. A broken chain lies at her feet as she walks forward. The statue became an icon of freedom and of the United States, and was a welcoming sight to immigrants arriving from abroad.
+					</p>
+				</div>
+		</div>
+		<div ng-controller="ctrlth">
+			<button ng-click="myFuncti()" class="three">St.Patrick's Cathedral</button>
+				<div ng-show="showr">
+					<p class="para">
+						The Cathedral of St. Patrick is a decorated Neo-Gothic-style Roman Catholic cathedral church in the United States and a prominent landmark of New York City.It is the seat of the archbishop of the Roman Catholic Archdiocese of New York as well as parish church, located on the east side of Fifth Avenue between 50th and 51st Streets in Midtown Manhattan, directly across the street from Rockefeller Center, facing the Atlas statue. It is considered one of the most visible symbols of Roman Catholicism in New York City and the United States.
+					</p>
+				</div>
+		</div>
+		<div ng-controller="ctrlf">
+			<button ng-click="myFunctio()" class="four">Central Park</button>
+				<div ng-show="showm">
+					<p class="para">
+						Central Park is an urban park in Manhattan, New York City. It is located between the Upper West Side and Upper East Side, roughly bounded by Fifth Avenue on the east, Central Park West on the west, Central Park South on the south, and Central Park North on the north. Central Park is the most visited urban park in the United States, with 40 million visitors in 2013, and one of the most filmed locations in the world. In terms of area, Central Park is the fifth-largest park in New York City, covering 843 acres (341 ha).
+
+The park was established in 1857 on 778 acres (315 ha) of land acquired by the city. In 1858, landscape architect Frederick Law Olmsted and architect/landscape designer Calvert Vaux won a design competition to improve and expand the park with a plan they titled the "Greensward Plan". Construction began the same year, and the park's first area was opened to the public in the winter of 1858. Construction north of the park continued during the American Civil War in the 1860s, and the park was expanded to its current size in 1873. After a period of decline in the early 20th century, Robert Moses started a program to clean up Central Park. Another decline in the late 20th century spurred the creation of the Central Park Conservancy in 1980, which refurbished many parts of the park during the 1980s and 1990s.
+					</p>
+				</div>
+		</div>
+	</div>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('ctrlo', function($scope) {
+    $scope.showMe = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+    }
+});
+app.controller('ctrlt',function($scope){
+	$scope.showl=false;
+	$scope.myFunct=function(){
+		$scope.showl=!$scope.showl;
+	}
+});
+app.controller('ctrlth',function($scope){
+	$scope.showr=false;
+	$scope.myFuncti=function(){
+		$scope.showr=!$scope.showr;
+	}
+});
+app.controller('ctrlf',function($scope){
+	$scope.showm=false;
+	$scope.myFunctio=function(){
+		$scope.showm=!$scope.showm;
+	}
+});
+</script>
+<script>
+	var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+</body>
+</html>

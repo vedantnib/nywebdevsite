@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
+<style>
+	body,html{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		font-family: Arial,helvetica,sans serif;
+	}
+	.headd{
+		width: 100%;
+		height: 40px;
+		background-color: #2a2a2a;
+		color: white;
+		margin: 0;
+	}
+	.sky{
+		position: absolute;
+		top: 0;
+		opacity: 0.8;
+		overflow: hidden;
+		width: 100%;
+		height: 650px;
+		z-index: -1;
+	}
+	.fromm{
+		padding: 5px;
+		top: 25px;
+	}
+</style>
+</head>
+<body>
+	<div class="bgr" ng-app="myApp">
+		<div class="headd"><h2>Register for further details</h2></div>
+		<img src="image3.jpg" alt="Cinque Terre" class="sky">
+		<div class="fromm" ng-controller="ctrl">
+			<form action="">
+				First name:
+				<input type="text" name="firstname" required ng-model="fistname">
+				<br><br>
+
+				Last name:
+				<input type="text" name="lastname" required ng-model="lastname">
+				<br><br>
+
+				Gender:
+				<input type="radio" name="gender" value="male" checked> Male
+				<input type="radio" name="gender" value="female"> Female<br><br>
+
+				Mobile No:
+				<input type="tel" name="usrtel" required><br><br>
+
+				 E-mail:
+				<input type="email" name="email" required><br><br>
+				<input type="submit" value="Submit" ng-click="myfunc()">
+				<input type="reset">
+			</form>
+			<div class="wel"><p>Welcome aboard, {{fname}}</p></div>
+		</div>
+<script>
+	var app=angular.module('myApp',[]);
+	app.controller('ctrl',function($scope){
+		var myfunc=function(){$scope.fname= $scope.firstname+ $scope.lastname;}
+	});
+</script>
+</body>
+</html>

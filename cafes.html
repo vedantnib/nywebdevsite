@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
+	<style>
+	body, html{
+		/*background-color: #2a2a2a;*/
+      	margin: 0;
+      	font-family: Arial, Helvetica, sans-serif;
+	}
+	.heading{
+		background-color: #2a2a2a;
+		color: white;
+		padding : 3px;
+
+	}
+	.cof{
+		position: absolute;
+		width: 100%;
+		height: 800px;
+		z-index: -1;
+	}
+	div.transbox {
+	  	margin: 50px;
+	  	background-color: #ffffff;
+	  	border: 1px solid black;
+	  	opacity: 0.6;
+	  	filter: alpha(opacity=60); /* For IE8 and earlier */
+	}
+	pre{
+		font-size: 18px;
+	}
+	</style>
+</head>
+<body>
+<div class="back" ng-app="myApp">
+	<div class="heading">
+		<h2>Cafes in New York City</h2>
+	</div>
+	<img src="aroma-aromatic-beans-434231.jpg" class="cof">
+	<div class="transbox" ng-controller="con">
+		<pre ng-click="myfunc()">Birch Coffee
+750 Columbus Ave
+New York, NY 10025
+212) 665-1444</pre>
+		<div ng-show="lol">
+			<p>This cafe has high energy, yet a relaxed vibe with accompanying tunes. Birch usually has a formidable line of young people from the office spaces nearby, despite prices that are typically 25 cents higher across the board than elsewhere. The standout offering here is the Kyoto drip iced coffee, which is tremendous, if also notably expensive at $4 for a small cup. The elaborate glass beaker needed for the production of the Kyoto stands as a frontispiece to the brewing counter. Wine and beer are available as well.</p>
+		</div>
+	</div>
+	<div class="transbox" ng-controller="cont">
+		<pre ng-click="myfunct()">Sweatshop
+232 Metropolitan Ave
+Brooklyn, NY 11211
+(917) 960-7232</pre>
+		<div ng-show="loll">
+			<p>Very real Australian vibes and very strong coffee have made Sweatshop a favorite for Williamsburg and its newfound locals. It’s not terribly big, so it’s mostly visitors grabbing takeaway, but there is a nice space outside for sitting in the sun when it's warm out. The music here relies heavily on Chet Fake and Tame Impala. Also, Sweatshop serves Vegemite.</p>
+		</div>
+	</div>
+	<div class="transbox" ng-controller="contr">
+		<pre ng-click="myfuncti()">Marlow & Sons
+81 Broadway
+Brooklyn, NY 11249
+(718) 384-1441</pre>
+		<div ng-show="lolll">
+			<p>In front of the lively dining room at this Williamsburg favorite is a sunny cafe serving excellent pastries and some of the city's best coffee. On any given day visitors will find the pastry counter filled with options like almond croissants, blueberry muffins, and rhubarb scones. When it’s nice out, Marlow & Sons will open up the French doors, creating an extension of its lovely sidewalk patio.</p>
+		</div>
+	</div>
+	<div class="transbox" ng-controller="contro">
+		<pre ng-click="myfunctio()">Sweetleaf
+10-93 Jackson Ave
+Queens, NY 11101
+(917) 832-6726
+</pre>
+		<div ng-show="lollll">
+			<p>This is the original location for this growing coffee chain. Besides the standard lineup of high quality espresso drinks, there are two special iced coffee drinks here, both a far cry from the saccharine concoctions served at the chains. There’s the Rocket Fuel, cold brew spiked with chicory, maple syrup, and milk, and the Voodoo Child, a Vietnamese-style iced coffee made with sweetened condensed milk. Sweetleaf is also a great place to hang out for a while, with free Wifi up front and a record room that has a turntable and an extensive vinyl collection in the back.</p>
+		</div>
+	</div>
+</div>
+<script>
+	var app= angular.module('myApp',[]);
+	app.controller('con',function($scope){
+		$scope.lol=false;
+		$scope.myfunc=function(){
+			$scope.lol=!$scope.lol;
+
+		}
+	});
+	app.controller('cont',function($scope){
+		$scope.loll=false;
+		$scope.myfunct=function(){
+			$scope.loll=!$scope.loll;
+		}
+	});
+	app.controller('contr',function($scope){
+		$scope.lolll=false;
+		$scope.myfuncti=function(){
+			$scope.lolll=!$scope.lolll;
+		}
+	});
+	app.controller('contro',function($scope){
+		$scope.lollll=false;
+		$scope.myfunctio=function(){
+			$scope.lollll=!$scope.lollll;
+		}
+	});
+</script>
+</body>
+</html>
